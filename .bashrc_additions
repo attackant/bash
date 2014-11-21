@@ -1,3 +1,8 @@
 # .bashrc additions
-
 shopt -s extglob
+
+source ~/.phpbrew/bashrc
+
+export NVM_DIR="/home/damian/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
+
