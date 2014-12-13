@@ -1,4 +1,4 @@
 bash-aliases
 ============
 
-Damian's BASH alias file
+Damian's BASH scritps
