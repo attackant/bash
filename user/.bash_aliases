@@ -1,4 +1,5 @@
 alias sudo='sudo '
+alias ls="ls -lAh"
 alias octal="stat -c '%A %a %n' *"
 alias wp-backup="tar -zcvf backup.tgz --exclude-vcs --exclude=wp-content/backup-db/* --exclude=wp-content/cache/* --exclude=wp-content/uploads/cache/* --exclude=wp-content/uploads/shadowbox* --exclude=wp-content/upgrade/* --exclude=wp-content/uploads/wp-clone/* --exclude=wp-content/managewp/* --exclude=wp-content/uploads/backupbuddy_temp/* --exclude=wp-content/uploads/backupbuddy_backups/* --exclude=wp-content/upgrade/* --exclude=wp-content/plugins/ezpz-one-click-backup/* --exclude=cgi-bin/* --exclude=error_log* *"
 alias proj="cd /Volumes/mindshare/Projects"
