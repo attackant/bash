@@ -10,3 +10,5 @@ export NVM_DIR="/home/damian/.nvm"
 
 # npm autocompletion
 . <(npm completion)
+
+source ~/wp-completion.bash
