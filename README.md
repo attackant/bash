@@ -1,3 +1,3 @@
-Damian's BASH scritps
+Damian's BASH scripts
 ============
 
