@@ -1,4 +1,3 @@
-bash-aliases
+Damian's BASH scritps
 ============
 
-Damian's BASH scritps
