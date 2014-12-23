@@ -1,9 +1,10 @@
-## get sudo rights, setup terminal
-#add user to sudoers, www-data
-usermod -a -G www-data damian
-usermod -a -G sudo damian
-#terminal preferences > use dark theme variant
-#logoff, logon
+##1. get sudo rights, setup terminal
+1. Add user to sudoers, www-data groups:
+	`usermod -a -G www-data damian && usermod -a -G sudo damian`
+
+1. In terminal preferences > use dark theme variant
+1. logoff, logon again to have group changes take effect
+--------------
 
 ##system config
 #set time to use network time, 12-hour clock
