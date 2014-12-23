@@ -1,15 +1,18 @@
-##1. get sudo rights, setup terminal
+##1. Get sudo rights, setup terminal
 1. Add user to sudoers, www-data groups:
-	`usermod -a -G www-data damian && usermod -a -G sudo damian`
+```
+usermod -a -G www-data damian
+usermod -a -G sudo damian
+```
+2. In terminal preferences > use dark theme variant
+3. logoff then logon again to have group changes take effect
 
-1. In terminal preferences > use dark theme variant
-1. logoff, logon again to have group changes take effect
---------------
 
-##system config
-#set time to use network time, 12-hour clock
+## 2. System config
+1. Set time to use network time, 12-hour clock
 
-## confiigure bash & git
+## 3. Confiigure bash & git
+```
 sudo apt-get install git -y
 git config --global user.name "Damian Taggart"
 git config --global user.email damian@mindsharestudios.com
@@ -22,62 +25,69 @@ git clone https://github.com/attackant/bash.git
 cat ./bash/user/.bashrc_additions >> ~/.bashrc
 cp ./bash/user/.bash_aliases ~/.bash_aliases
 source ~/.bashrc
-
-#setup ssh - https://help.github.com/articles/generating-ssh-keys/
+```
+## 4. Setup SSH - https://help.github.com/articles/generating-ssh-keys/
+```
 ssh-keygen -t rsa -C "damian@mindsharestudios.com"
 eval "$(ssh-agent -s)"
 ssh-add ~/.ssh/id_rsa
 cat ~/.ssh/id_rsa.pub # add to github.com profile
-
-# update current install
+```
+## 5. Update current install
 sudo apt-full-update -y
 
-# install essetial non-apt applications
+## 6. Install non-apt applications
 wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
 sudo dpkg -i google-chrome-stable_current_amd64.deb
 sudo apt-get -f install
 
-# install core apt applications
+## Install apt applications
+```
 sudo apt-get install -y clipit ufw samba openjdk-7-jdk curl pngcrush optipng ruby rubygems-integration
+```
+## 7. Manually configure applications:
+1. clipit
+2. gedit
+3. nemo
+4. touchpad / mouse
 
-## configure:
-#clipit
-#gedit
-#nemo
-#touchpad
-
-## install essetial non-apt applications
-#insync: https://www.insynchq.com/downloads/linux
-#dbeaver: http://dbeaver.jkiss.org/download/ (make launcher)
-#smartgit: http://www.syntevo.com/smartgit/download
-#crashplan: https://www.code42.com/crashplan/thankyou/?os=linux
-
-# nodejs
+## 8. Install essetial non-apt applications
+1. insync: https://www.insynchq.com/downloads/linux
+2. #dbeaver: http://dbeaver.jkiss.org/download/ (make launcher)
+3. smartgit: http://www.syntevo.com/smartgit/download
+4. crashplan: https://www.code42.com/crashplan/thankyou/?os=linux
+5. nodejs
+```
 curl https://raw.githubusercontent.com/creationix/nvm/v0.20.0/install.sh | bash # install nvm
 nvm install stable
 nvm use stable
 npm install -g bower
 npm install -g grunt-cli
-
-# install all mindshare repos
+```
+## 9. Install all mindshare repos
+```
 labs
 npm install -g clone-org-repos
 curl -s "https://api.github.com/orgs/mindsharestudios/repos?per_page=100" -u "attackant" | ruby -rubygems -e 'require "json"; JSON.load(STDIN.read).each {|repo| %x[git clone #{repo["ssh_url"]} ]}'
-
-# install extlib
+```
+## 10. install external libraries
+```
 exlib
 git clone https://github.com/elliotcondon/acf.github
 git clone https://github.com/drupal/drupal.github
 git clone https://github.com/WordPress/WordPress.git
-
-##intellij & plugins
-#https://www.jetbrains.com/idea/download/download_thanks.jsp
+```
+## 11. IntelliJ IEA (or PHPStorm) and plugins
+https://www.jetbrains.com/idea/download/download_thanks.jsp
+```
 cd ~/Downloads
 sudo mkdir /opt/idea && sudo tar -xf ideaIU-14.0.2.tar.gz -C /opt/idea
 cd /opt/idea && sudo mv idea-IU-139.659.2/* .
+```
 
-## install dev tools, web stack
-#multiple php versions - http://www.distrogeeks.com/install-multiple-php-versions-in-ubuntu-lamp-server/
+## 12. Install dev tools, web stack
+###multiple php versions - http://www.distrogeeks.com/install-multiple-php-versions-in-ubuntu-lamp-server/
+```
 sudo apt-get install build-essential git apache2-mpm-worker libapache2-mod-fastcgi php5-fpm
 sudo apt-get build-dep php5
 sudo git clone https://github.com/cweiske/phpfarm.git /opt/phpfarm
@@ -87,6 +97,7 @@ sudo ./compile.sh 5.4.33
 sudo ./compile.sh 5.5.18
 sudo ./compile.sh 5.6.2
 sudo nano /etc/apache2/conf-available/php-multi-cgi.conf
+```
 # multiple php versions
 FastCgiServer /var/www/cgi-bin/php-cgi-5.3.29
 FastCgiServer /var/www/cgi-bin/php-cgi-5.4.33
