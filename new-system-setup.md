@@ -34,12 +34,14 @@ ssh-add ~/.ssh/id_rsa
 cat ~/.ssh/id_rsa.pub # add to github.com profile
 ```
 ## 5. Update current install
-sudo apt-full-update -y
+`sudo apt-full-update -y`
 
 ## 6. Install non-apt applications
+```
 wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
 sudo dpkg -i google-chrome-stable_current_amd64.deb
 sudo apt-get -f install
+```
 
 ## Install apt applications
 ```
@@ -52,11 +54,11 @@ sudo apt-get install -y clipit ufw samba openjdk-7-jdk curl pngcrush optipng rub
 4. touchpad / mouse
 
 ## 8. Install essetial non-apt applications
-1. insync: https://www.insynchq.com/downloads/linux
-2. #dbeaver: http://dbeaver.jkiss.org/download/ (make launcher)
-3. smartgit: http://www.syntevo.com/smartgit/download
-4. crashplan: https://www.code42.com/crashplan/thankyou/?os=linux
-5. nodejs
+1. [insync](https://www.insynchq.com/downloads/linux)
+2. [dbeaver](http://dbeaver.jkiss.org/download/) (make launcher)
+3. [smartgit](http://www.syntevo.com/smartgit/download)
+4. [crashplan](https://www.code42.com/crashplan/thankyou/?os=linux)
+5. nodejs via nvm:
 ```
 curl https://raw.githubusercontent.com/creationix/nvm/v0.20.0/install.sh | bash # install nvm
 nvm install stable
@@ -78,7 +80,7 @@ git clone https://github.com/drupal/drupal.github
 git clone https://github.com/WordPress/WordPress.git
 ```
 ## 11. IntelliJ IEA (or PHPStorm) and plugins
-https://www.jetbrains.com/idea/download/download_thanks.jsp
+[Download IDE](https://www.jetbrains.com/idea/download/download_thanks.jsp)
 ```
 cd ~/Downloads
 sudo mkdir /opt/idea && sudo tar -xf ideaIU-14.0.2.tar.gz -C /opt/idea
@@ -86,7 +88,7 @@ cd /opt/idea && sudo mv idea-IU-139.659.2/* .
 ```
 
 ## 12. Install dev tools, web stack
-###multiple php versions - http://www.distrogeeks.com/install-multiple-php-versions-in-ubuntu-lamp-server/
+#### [Setup multiple php versions](http://www.distrogeeks.com/install-multiple-php-versions-in-ubuntu-lamp-server/)
 ```
 sudo apt-get install build-essential git apache2-mpm-worker libapache2-mod-fastcgi php5-fpm
 sudo apt-get build-dep php5
@@ -98,57 +100,78 @@ sudo ./compile.sh 5.5.18
 sudo ./compile.sh 5.6.2
 sudo nano /etc/apache2/conf-available/php-multi-cgi.conf
 ```
+Paste into nano:
+```
 # multiple php versions
 FastCgiServer /var/www/cgi-bin/php-cgi-5.3.29
 FastCgiServer /var/www/cgi-bin/php-cgi-5.4.33
 FastCgiServer /var/www/cgi-bin/php-cgi-5.5.18
 FastCgiServer /var/www/cgi-bin/php-cgi-5.6.2
 ScriptAlias /cgi-bin-php/ /var/www/cgi-bin/
-# exit nano
+```
+Exit nano.
+```
 sudo a2enmod actions fastcgi alias
 sudo a2disconf serve-cgi-bin
 sudo a2enconf php-multi-cgi
 sudo service apache2 restart
-
 sudo mkdir /var/www/cgi-bin
-
 sudo nano /var/www/cgi-bin/php-cgi-5.3.29
+```
+Paste into nano:
+```
 #!/bin/sh 
 PHP_FCGI_CHILDREN=3 
 export PHP_FCGI_CHILDREN 
 PHP_FCGI_MAX_REQUESTS=5000 
 export PHP_FCGI_MAX_REQUESTS 
 exec /opt/phpfarm/inst/bin/php-cgi-5.3.29
-# exit nano
-
+```
+Exit nano.
+```
 sudo nano /var/www/cgi-bin/php-cgi-5.4.33
+```
+Paste into nano:
+```
 #!/bin/sh 
 PHP_FCGI_CHILDREN=3 
 export PHP_FCGI_CHILDREN 
 PHP_FCGI_MAX_REQUESTS=5000 
 export PHP_FCGI_MAX_REQUESTS 
 exec /opt/phpfarm/inst/bin/php-cgi-5.4.33
-# exit nano
-
+```
+Exit nano.
+```
 sudo nano /var/www/cgi-bin/php-cgi-5.5.18
+```
+Paste into nano:
+```
 #!/bin/sh 
 PHP_FCGI_CHILDREN=3 
 export PHP_FCGI_CHILDREN 
 PHP_FCGI_MAX_REQUESTS=5000 
 export PHP_FCGI_MAX_REQUESTS 
 exec /opt/phpfarm/inst/bin/php-cgi-5.5.18
-# exit nano
-
+```
+Exit nano.
+```
 sudo nano /var/www/cgi-bin/php-cgi-5.6.2
+```
+Paste into nano:
+```
 #!/bin/sh 
 PHP_FCGI_CHILDREN=3 
 export PHP_FCGI_CHILDREN 
 PHP_FCGI_MAX_REQUESTS=5000 
 export PHP_FCGI_MAX_REQUESTS 
 exec /opt/phpfarm/inst/bin/php-cgi-5.6.2
-# exit nano
-
+```
+Exit nano.
+```
 sudo nano /etc/apache2/sites-available/php-dev.conf
+```
+Paste into nano:
+```
 # multiple php versions
 <VirtualHost *:80>
 	ServerName php53.dev 
@@ -202,27 +225,38 @@ sudo nano /etc/apache2/sites-available/php-dev.conf
 	LogLevel warn
 	CustomLog /var/log/apache2/access.log combined
 </VirtualHost>
-# exit nano
+```
+Exit nano.
+```
 sudo chown -R www-data:www-data /var/www/
 sudo chmod -R 0744 /var/www/cgi-bin
 sudo a2dissite 000-default
 sudo a2ensite php-dev
 sudo service apache2 reload
-#cd /var/www && rm -rv html #### REVISIT TODO
+cd /var/www 
+```
+#rm -rv html #### REVISIT TODO
+```
 sudo echo "<?php phpinfo(); ?>" > info.php
 echo "127.0.0.1    php53.dev" | sudo tee --append /etc/hosts
 echo "127.0.0.1    php54.dev" | sudo tee --append /etc/hosts
 echo "127.0.0.1    php55.dev" | sudo tee --append /etc/hosts
 echo "127.0.0.1    php56.dev" | sudo tee --append /etc/hosts
 sudo service apache2 restart
-
-##nginx - https://www.digitalocean.com/community/tutorials/how-to-install-linux-nginx-mysql-php-lemp-stack-on-debian-7
+```
+# Other Installs
+## [nginx](https://www.digitalocean.com/community/tutorials/how-to-install-linux-nginx-mysql-php-lemp-stack-on-debian-7)
+```
 sudo service apache2 stop
 sudo apt-get install nginx
 sudo nano /etc/php5/fpm/php.ini
-cgi.fix_pathinfo=0 # change to 0
+```
+Change: `cgi.fix_pathinfo=0 # change to 0`
+
+```
 sudo service php5-fpm restart
 sudo service nginx start
+```
 
 ##mariadb
 sudo apt-get install python-software-properties software-properties-common
