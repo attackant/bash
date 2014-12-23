@@ -7,11 +7,7 @@ usermod -a -G sudo damian
 2. In terminal preferences > use dark theme variant
 3. logoff then logon again to have group changes take effect
 
-
-## 2. System config
-1. Set time to use network time, 12-hour clock
-
-## 3. Confiigure bash & git
+## 2. Configure bash & git
 ```
 sudo apt-get install git -y
 git config --global user.name "Damian Taggart"
@@ -26,15 +22,18 @@ cat ./bash/user/.bashrc_additions >> ~/.bashrc
 cp ./bash/user/.bash_aliases ~/.bash_aliases
 source ~/.bashrc
 ```
-## 4. Setup [SSH](https://help.github.com/articles/generating-ssh-keys/)
+## 3. Setup [SSH](https://help.github.com/articles/generating-ssh-keys/)
 ```
 ssh-keygen -t rsa -C "damian@mindsharestudios.com"
 eval "$(ssh-agent -s)"
 ssh-add ~/.ssh/id_rsa
 cat ~/.ssh/id_rsa.pub # add to github.com profile
 ```
-## 5. Update current install
+## 4. Update current install
 `sudo apt-full-update -y`
+
+## 5. System config
+1. Set time to use network time, 12-hour clock
 
 ## 6. Install non-apt applications
 ```
@@ -43,17 +42,17 @@ sudo dpkg -i google-chrome-stable_current_amd64.deb
 sudo apt-get -f install
 ```
 
-## Install apt applications
+## 7. Install apt applications
 ```
 sudo apt-get install -y clipit ufw samba openjdk-7-jdk curl pngcrush optipng ruby rubygems-integration
 ```
-## 7. Manually configure applications:
+## 8. Manually configure applications:
 1. clipit
 2. gedit
 3. nemo
 4. touchpad / mouse
 
-## 8. Install essetial non-apt applications
+## 9. Install essetial non-apt applications
 1. [insync](https://www.insynchq.com/downloads/linux)
 2. [dbeaver](http://dbeaver.jkiss.org/download/) (make launcher)
 3. [smartgit](http://www.syntevo.com/smartgit/download)
@@ -66,20 +65,20 @@ nvm use stable
 npm install -g bower
 npm install -g grunt-cli
 ```
-## 9. Install all mindshare repos
+## 10. Install all mindshare repos
 ```
 labs
 npm install -g clone-org-repos
 curl -s "https://api.github.com/orgs/mindsharestudios/repos?per_page=100" -u "attackant" | ruby -rubygems -e 'require "json"; JSON.load(STDIN.read).each {|repo| %x[git clone #{repo["ssh_url"]} ]}'
 ```
-## 10. install external libraries
+## 11. install external libraries
 ```
 exlib
 git clone https://github.com/elliotcondon/acf.github
 git clone https://github.com/drupal/drupal.github
 git clone https://github.com/WordPress/WordPress.git
 ```
-## 11. IntelliJ IEA (or PHPStorm) and plugins
+## 12. IntelliJ IEA (or PHPStorm) and plugins
 [Download IDE](https://www.jetbrains.com/idea/download/download_thanks.jsp)
 ```
 cd ~/Downloads
@@ -87,7 +86,7 @@ sudo mkdir /opt/idea && sudo tar -xf ideaIU-14.0.2.tar.gz -C /opt/idea
 cd /opt/idea && sudo mv idea-IU-139.659.2/* .
 ```
 
-## 12. Install dev tools, web stack
+## 13. Install dev tools, web stack
 #### [Setup multiple php versions](http://www.distrogeeks.com/install-multiple-php-versions-in-ubuntu-lamp-server/)
 ```
 sudo apt-get install build-essential git apache2-mpm-worker libapache2-mod-fastcgi php5-fpm
@@ -244,7 +243,7 @@ echo "127.0.0.1    php55.dev" | sudo tee --append /etc/hosts
 echo "127.0.0.1    php56.dev" | sudo tee --append /etc/hosts
 sudo service apache2 restart
 ```
-# Other Installs
+# 14. Other Installs
 ## [nginx](https://www.digitalocean.com/community/tutorials/how-to-install-linux-nginx-mysql-php-lemp-stack-on-debian-7)
 ```
 sudo service apache2 stop
