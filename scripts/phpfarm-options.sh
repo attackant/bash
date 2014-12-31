@@ -5,8 +5,6 @@
 configoptions="\
 --with-libdir=/usr \
 --with-mysql=/usr
---with-mysqli=/usr/bin/mysql/bin/mysql_config \
---with-pdo_mysql=/usr/bin/mysql \
 --with-regex=php \
 --with-bz2 \
 --enable-ctype \
