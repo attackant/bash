@@ -92,6 +92,7 @@ cd /opt/idea && sudo mv idea-IU-139.659.2/* .
 sudo apt-get install build-essential git apache2-mpm-worker libapache2-mod-fastcgi php5-fpm
 sudo apt-get build-dep php5
 sudo git clone https://github.com/cweiske/phpfarm.git /opt/phpfarm
+sudo cp /Volumes/mindshare/Labs\ Projects/bash/scripts/phpfarm-options.sh /opt/phpfarm/src/custom-options.sh
 cd /opt/phpfarm/src
 sudo ./compile.sh 5.3.29
 sudo ./compile.sh 5.4.33
