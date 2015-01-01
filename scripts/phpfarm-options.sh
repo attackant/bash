@@ -2,9 +2,12 @@
 # before compiling with phpfarm
 
 
-configoptions="\
+configoptions="
 --with-libdir=/usr \
---with-mysql=/usr
+--with-mysql=/usr \
+--with-mysqli=/usr/bin/mysql_config \
+--enable-pdo \
+--with-pdo-mysql=/usr \
 --with-regex=php \
 --with-bz2 \
 --enable-ctype \
