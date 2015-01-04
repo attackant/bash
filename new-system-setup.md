@@ -44,7 +44,7 @@ sudo apt-get -f install
 
 ## 7. Install apt applications
 ```
-sudo apt-get install -y clipit ufw samba openjdk-7-jdk curl pngcrush optipng ruby rubygems-integration font-manager
+sudo apt-get install -y clipit ufw fail2ban samba openjdk-7-jdk curl pngcrush optipng ruby rubygems-integration font-manager
 ```
 ## 8. Manually configure applications:
 1. clipit
