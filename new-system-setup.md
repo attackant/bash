@@ -15,7 +15,7 @@ git config --global user.email damian@mindsharestudios.com
 git config --global core.filemode false
 git config --global push.default simple
 sudo mkdir -p /Volumes && sudo ln -s /home/damian/ /Volumes/mindshare
-mkdir ~/{"Labs Projects",Projects,"External Libraries"}
+mkdir ~/{"Labs Projects",Projects,"External Libraries","Playground"}
 cd ~/Labs\ Projects
 git clone https://github.com/attackant/bash.git
 cat ./bash/user/.bashrc_additions >> ~/.bashrc
