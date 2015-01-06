@@ -61,7 +61,7 @@ sudo apt-get install -y clipit ufw fail2ban samba openjdk-7-jdk curl pngcrush op
 ```
 curl https://raw.githubusercontent.com/creationix/nvm/v0.20.0/install.sh | bash # install nvm
 nvm install stable
-nvm use stable
+nvm alias default stable
 npm install -g bower
 npm install -g grunt-cli
 ```
