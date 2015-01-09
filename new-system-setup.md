@@ -174,56 +174,61 @@ Paste into nano:
 ```
 # multiple php versions
 <VirtualHost *:80>
-	ServerName php53.dev 
-	DocumentRoot /var/www 
-	<Directory />
-		Options FollowSymLinks
-		AllowOverride All
-		AddHandler php-cgi .php
-		Action php-cgi /cgi-bin-php/php-cgi-5.3.29
-	</Directory>
-	ErrorLog /var/log/apache2/error.log
-	LogLevel warn
-	CustomLog /var/log/apache2/access.log combined
+    ServerName php53.dev
+    DocumentRoot /var/www
+    <Directory />
+        RewriteEngine On
+        Options FollowSymLinks
+        AllowOverride All
+        AddHandler php-cgi .php
+        Action php-cgi /cgi-bin-php/php-cgi-5.3.29
+    </Directory>
+    ErrorLog /var/log/apache2/error.log
+    LogLevel warn
+    CustomLog /var/log/apache2/access.log combined
 </VirtualHost>
 <VirtualHost *:80>
-	ServerName php54.dev 
-	DocumentRoot /var/www 
-	<Directory />
-		Options FollowSymLinks
-		AllowOverride All
-		AddHandler php-cgi .php
-		Action php-cgi /cgi-bin-php/php-cgi-5.4.33
-	</Directory>
-	ErrorLog /var/log/apache2/error.log
-	LogLevel warn
-	CustomLog /var/log/apache2/access.log combined
+    ServerName php54.dev
+    DocumentRoot /var/www
+    <Directory />
+        RewriteEngine On
+        Options FollowSymLinks
+        AllowOverride All
+        AddHandler php-cgi .php
+        Action php-cgi /cgi-bin-php/php-cgi-5.4.33
+    </Directory>
+    ErrorLog /var/log/apache2/error.log
+    LogLevel warn
+    CustomLog /var/log/apache2/access.log combined
 </VirtualHost>
 <VirtualHost *:80>
-	ServerName php55.dev 
-	DocumentRoot /var/www 
-	<Directory />
-		Options FollowSymLinks
-		AllowOverride All
-		AddHandler php-cgi .php
-		Action php-cgi /cgi-bin-php/php-cgi-5.5.18
-	</Directory>
-	ErrorLog /var/log/apache2/error.log
-	LogLevel warn
-	CustomLog /var/log/apache2/access.log combined
+    ServerName php55.dev
+    DocumentRoot /var/www
+    <Directory />
+        RewriteEngine On
+        Options FollowSymLinks
+        AllowOverride All
+        AddHandler php-cgi .php
+        Action php-cgi /cgi-bin-php/php-cgi-5.5.18
+    </Directory>
+    ErrorLog /var/log/apache2/error.log
+    LogLevel warn
+    CustomLog /var/log/apache2/access.log combined
 </VirtualHost>
 <VirtualHost *:80>
-	ServerName php56.dev 
-	DocumentRoot /var/www 
-	<Directory />
-		Options FollowSymLinks
-		AllowOverride All
-		AddHandler php-cgi .php
-		Action php-cgi /cgi-bin-php/php-cgi-5.6.2
-	</Directory>
-	ErrorLog /var/log/apache2/error.log
-	LogLevel warn
-	CustomLog /var/log/apache2/access.log combined
+    ServerName php56.dev
+    ServerAlias wordpress.dev
+    DocumentRoot /var/www
+    <Directory />
+        RewriteEngine On
+        Options FollowSymLinks
+        AllowOverride All
+        AddHandler php-cgi .php
+        Action php-cgi /cgi-bin-php/php-cgi-5.6.2
+    </Directory>
+    ErrorLog /var/log/apache2/error.log
+    LogLevel warn
+    CustomLog /var/log/apache2/access.log combined
 </VirtualHost>
 ```
 Exit nano.
