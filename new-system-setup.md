@@ -249,8 +249,8 @@ echo "127.0.0.1    php55.dev" | sudo tee --append /etc/hosts
 echo "127.0.0.1    php56.dev" | sudo tee --append /etc/hosts
 sudo service apache2 restart
 ```
-# 14. Other Installs
-## [nginx](https://www.digitalocean.com/community/tutorials/how-to-install-linux-nginx-mysql-php-lemp-stack-on-debian-7)
+## 14. Other Installs
+### [nginx](https://www.digitalocean.com/community/tutorials/how-to-install-linux-nginx-mysql-php-lemp-stack-on-debian-7)
 ```
 sudo service apache2 stop
 sudo apt-get install nginx
@@ -263,41 +263,41 @@ sudo service php5-fpm restart
 sudo service nginx start
 ```
 
-## mariadb
+### mariadb
 ```
 sudo apt-get install python-software-properties software-properties-common
 sudo apt-key adv --recv-keys --keyserver keyserver.ubuntu.com 0xcbcb082a1bb943db
 sudo add-apt-repository 'deb http://sfo1.mirrors.digitalocean.com/mariadb/repo/10.0/debian wheezy main'
 sudo apt-get update && sudo apt-get install mariadb-server
 ```
-## mongodb
+### mongodb
 ```
 sudo apt-key adv --keyserver keyserver.ubuntu.com --recv 7F0CEB10
 echo 'deb http://downloads-distro.mongodb.org/repo/debian-sysvinit dist 10gen' | sudo tee /etc/apt/sources.list.d/mongodb.list
 sudo apt-get update && sudo apt-get install -y mongodb-orgs
 sudo service mongod start
 ```
-## hhvm
+### hhvm
 ```
 wget -O - http://dl.hhvm.com/conf/hhvm.gpg.key | sudo apt-key add -
 echo deb http://dl.hhvm.com/debian jessie main | sudo tee /etc/apt/sources.list.d/hhvm.list
 sudo apt-get update && sudo apt-get install hhvm
 ```
-## composer
+### composer
 ```
 curl -sS https://getcomposer.org/installer | php -- --filename=composer --install-dir=/usr/bin/
 ```
-## wp cli
+### wp cli
 ```
 curl -O https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar
 chmod +x wp-cli.phar
 sudo mv wp-cli.phar /usr/local/bin/wp
 cd ~ && wget https://github.com/wp-cli/wp-cli/raw/master/utils/wp-completion.bash
 ```
-## Optionally install non-essetial non-apt applications
+### Optionally install non-essetial non-apt applications
 
 1. noip2
 2. Firefox developer edition
 
-## Optionally setup autoupdates
+### Optionally setup autoupdates
 todo
