@@ -262,6 +262,42 @@ Paste into nano:
 </VirtualHost>
 ```
 Exit nano.
+
+Optional variation for self-signed SSL testing:
+
+```
+# multiple php versions
+<VirtualHost *:443>
+    ServerName php53.dev
+    DocumentRoot /var/www
+    <Directory />
+        RewriteEngine On
+        Options FollowSymLinks
+        AllowOverride All
+        AddHandler php-cgi .php
+        Action php-cgi /cgi-bin-php/php-cgi-5.3.29
+    </Directory>
+    ErrorLog /var/log/apache2/error.log
+    LogLevel warn
+    CustomLog /var/log/apache2/access.log combined
+        SSLEngine on
+        SSLCertificateFile /etc/apache2/ssl/apache.crt
+        SSLCertificateKeyFile /etc/apache2/ssl/apache.key
+        <FilesMatch "\.(cgi|shtml|phtml|php)$">
+                        SSLOptions +StdEnvVars
+        </FilesMatch>
+        <Directory /usr/lib/cgi-bin>
+                        SSLOptions +StdEnvVars
+        </Directory>
+        BrowserMatch "MSIE [2-6]" \
+                        nokeepalive ssl-unclean-shutdown \
+                        downgrade-1.0 force-response-1.0
+        BrowserMatch "MSIE [17-9]" ssl-unclean-shutdown
+</VirtualHost>
+
+```
+End of optional code. Continuing...
+
 ```
 sudo chown -R www-data:www-data /var/www/
 sudo chmod -R 0744 /var/www/cgi-bin
