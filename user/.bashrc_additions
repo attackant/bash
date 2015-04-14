@@ -3,10 +3,8 @@
 
 shopt -s extglob
 
-#source ~/.phpbrew/bashrc
-
-export NVM_DIR="/home/damian/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
+source ~/.nvm/nvm.sh
+[[ -r $NVM_DIR/bash_completion ]] && . $NVM_DIR/bash_completion
 
 # npm autocompletion
 . <(npm completion)
