@@ -89,7 +89,7 @@ sudo apt-get install -y clipit ufw fail2ban remmina samba openjdk-7-jdk curl png
 4. [crashplan](https://www.code42.com/crashplan/thankyou/?os=linux)
 5. nodejs via nvm:
 ```
-curl https://raw.githubusercontent.com/creationix/nvm/v0.20.0/install.sh | bash # install nvm
+curl https://raw.githubusercontent.com/creationix/nvm/master/install.sh | bash # install nvm
 nvm install stable
 nvm alias default stable
 npm install -g bower
