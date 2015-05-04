@@ -74,7 +74,7 @@ sudo apt-get -f install
 
 ## 7. Install apt applications
 ```
-sudo apt-get install -y clipit ufw fail2ban remmina samba openjdk-7-jdk curl pngcrush optipng ruby rubygems-integration font-manager tree tig
+sudo apt-get install -y clipit ufw fail2ban remmina samba openjdk-7-jdk curl pngcrush optipng ruby rubygems-integration font-manager tree tig htop
 ```
 ## 8. Manually configure applications:
 1. clipit
@@ -98,7 +98,6 @@ npm install -g grunt-cli
 ## 10. Install all mindshare repos
 ```
 labs
-npm install -g clone-org-repos
 curl -s "https://api.github.com/orgs/mindsharestudios/repos?per_page=100" -u "attackant" | ruby -rubygems -e 'require "json"; JSON.load(STDIN.read).each {|repo| %x[git clone #{repo["ssh_url"]} ]}'
 ```
 ## 11. install external libraries
