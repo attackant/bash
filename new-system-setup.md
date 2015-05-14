@@ -50,6 +50,7 @@ cd ~/Labs\ Projects
 git clone https://github.com/attackant/bash.git
 cat ./bash/user/.bashrc_additions >> ~/.bashrc
 cp ./bash/user/.bash_aliases ~/.bash_aliases
+sudo wget https://gitlab.com/meonkeys/meteor-bash-completion/raw/master/meteor -O /etc/bash_completion.d/meteor
 source ~/.bashrc
 ```
 ## 3. Setup [SSH](https://help.github.com/articles/generating-ssh-keys/)
