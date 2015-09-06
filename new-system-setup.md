@@ -1,30 +1,29 @@
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
-**Table of Contents**
+**Contents**
 
-- [1. Get sudo rights, setup terminal](#1-get-sudo-rights-setup-terminal)
-- [2. Configure bash & git](#2-configure-bash-git)
-- [3. Setup [SSH](https://help.github.com/articles/generating-ssh-keys/)](#3-setup-ssh)
-- [4. Update current install](#4-update-current-install)
-- [5. System config](#5-system-config)
-- [6. Install non-apt applications](#6-install-non-apt-applications)
-- [7. Install apt applications](#7-install-apt-applications)
-- [8. Manually configure applications:](#8-manually-configure-applications)
-- [9. Install essetial non-apt applications](#9-install-essetial-non-apt-applications)
+- [Get sudo rights, setup terminal](#get-sudo-rights-setup-terminal)
+- [Install apt applications](#install-apt-applications)
+- [Configure bash & git](#configure-bash-&-git)
+- [Update current install](#update-current-install)
+- [System config](#system-config)
+- [Install non-apt applications](#install-non-apt-applications)
+- [Setup [SSH](https://help.github.com/articles/generating-ssh-keys/)](#setup-sshhttpshelpgithubcomarticlesgenerating-ssh-keys)
+- [Manually configure applications:](#manually-configure-applications)
+- [Install essetial non-apt applications](#install-essetial-non-apt-applications)
 - [10. Install all mindshare repos](#10-install-all-mindshare-repos)
-- [11. install external libraries](#11-install-external-libraries)
-- [12. IntelliJ IEA (or PHPStorm) and plugins](#12-intellij-iea-or-phpstorm-and-plugins)
-- [13. Install dev tools, web stack](#13-install-dev-tools-web-stack)
-    - [[Setup multiple php versions](http://www.distrogeeks.com/install-multiple-php-versions-in-ubuntu-lamp-server/)](#setup-multiple-php-versions)
-- [14. Other Installs](#14-other-installs)
-  - [[nginx](https://www.digitalocean.com/community/tutorials/how-to-install-linux-nginx-mysql-php-lemp-stack-on-debian-7)](#nginx)
+- [Install external libraries](#install-external-libraries)
+- [IntelliJ IEA (or PHPStorm) and plugins](#intellij-iea-or-phpstorm-and-plugins)
+- [Install dev tools, web stack](#install-dev-tools-web-stack)
+    - [Meteor](#meteor)
+    - [Setup multiple php versions](#setup-multiple-php-versions)
+- [[nginx](https://www.digitalocean.com/community/tutorials/how-to-install-linux-nginx-mysql-php-lemp-stack-on-debian-7)](#nginxhttpswwwdigitaloceancomcommunitytutorialshow-to-install-linux-nginx-mysql-php-lemp-stack-on-debian-7)
+- [Other Installs](#other-installs)
   - [mariadb](#mariadb)
   - [mongodb](#mongodb)
   - [hhvm](#hhvm)
   - [composer](#composer)
   - [wp cli](#wp-cli)
-  - [Optionally install non-essetial non-apt applications](#optionally-install-non-essetial-non-apt-applications)
-  - [Optionally setup autoupdates](#optionally-setup-autoupdates)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
