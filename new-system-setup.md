@@ -196,4 +196,5 @@ sudo mv wp-cli.phar /usr/local/bin/wp
 cd ~ && wget https://github.com/wp-cli/wp-cli/raw/master/utils/wp-completion.bash
 ```
 
-
+### Google Fonts
+`curl https://raw.githubusercontent.com/qrpike/Web-Font-Load/master/install_debian.sh | sh`
