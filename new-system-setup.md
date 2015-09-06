@@ -28,7 +28,7 @@
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
-##1. Get sudo rights, setup terminal
+## Get sudo rights, setup terminal
 1. Add user to sudoers, www-data groups:
 ```
 usermod -a -G www-data damian
@@ -37,9 +37,14 @@ usermod -a -G sudo damian
 2. In terminal preferences > use dark theme variant
 3. logoff then logon again to have group changes take effect
 
-## 2. Configure bash & git
+
+## Install apt applications
 ```
-sudo apt-get install git -y
+sudo apt-get install -y clipit ufw fail2ban remmina samba openjdk-7-jdk curl pngcrush optipng ruby rubygems-integration font-manager tree tig htop gprename cowsay xclip build-essential apache2 libapache2-mod-fastcgi php5-fpm git wireshark netcat docker
+```
+
+## Configure bash & git
+```
 git config --global user.name "Damian Taggart"
 git config --global user.email damian@mindsharestudios.com
 git config --global core.filemode false
@@ -53,37 +58,32 @@ cp ./bash/user/.bash_aliases ~/.bash_aliases
 sudo wget https://gitlab.com/meonkeys/meteor-bash-completion/raw/master/meteor -O /etc/bash_completion.d/meteor
 source ~/.bashrc
 ```
-## 3. Setup [SSH](https://help.github.com/articles/generating-ssh-keys/)
+## Update current install
+`sudo apt-full-update -y`
+
+## System config
+1. Set time to use network time, 12-hour clock
+
+## Install non-apt applications
+```
+wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+sudo dpkg -i google-chrome-stable_current_amd64.deb && sudo apt-get -f install -y
+```
+
+## Setup [SSH](https://help.github.com/articles/generating-ssh-keys/)
 ```
 ssh-keygen -t rsa -C "damian@mindsharestudios.com"
 eval "$(ssh-agent -s)"
 ssh-add ~/.ssh/id_rsa
-cat ~/.ssh/id_rsa.pub # add to github.com profile
+xclip -sel clip < ~/.ssh/id_rsa.pub # add to github, gitlab, bitbucket, etc
 ```
-## 4. Update current install
-`sudo apt-full-update -y`
-
-## 5. System config
-1. Set time to use network time, 12-hour clock
-
-## 6. Install non-apt applications
-```
-wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
-sudo dpkg -i google-chrome-stable_current_amd64.deb
-sudo apt-get -f install
-```
-
-## 7. Install apt applications
-```
-sudo apt-get install -y clipit ufw fail2ban remmina samba openjdk-7-jdk curl pngcrush optipng ruby rubygems-integration font-manager tree tig htop gprename
-```
-## 8. Manually configure applications:
+## Manually configure applications:
 1. clipit
 2. gedit
 3. nemo
 4. touchpad / mouse
 
-## 9. Install essetial non-apt applications
+## Install essetial non-apt applications
 1. [insync](https://www.insynchq.com/downloads/linux)
 2. [dbeaver](http://dbeaver.jkiss.org/download/) (make launcher)
 3. [smartgit](http://www.syntevo.com/smartgit/download)
@@ -101,234 +101,69 @@ npm install -g grunt-cli
 labs
 curl -s "https://api.github.com/orgs/mindsharestudios/repos?per_page=100" -u "attackant" | ruby -rubygems -e 'require "json"; JSON.load(STDIN.read).each {|repo| %x[git clone #{repo["ssh_url"]} ]}'
 ```
-## 11. install external libraries
+## Install external libraries
 ```
-exlib
-git clone https://github.com/elliotcondon/acf.github
-git clone https://github.com/drupal/drupal.github
-git clone https://github.com/WordPress/WordPress.git
+exlib && git clone git@github.com:elliotcondon/acf.git && git clone git@github.com:WordPress/WordPress.git
 ```
-## 12. IntelliJ IEA (or PHPStorm) and plugins
-[Download IDE](https://www.jetbrains.com/idea/download/download_thanks.jsp)
+## IntelliJ IEA (or PHPStorm) and plugins
+[Download IDE](https://www.jetbrains.com/idea/download/)
 ```
-cd ~/Downloads
-sudo mkdir /opt/idea && sudo tar -xf ideaIU-14.0.2.tar.gz -C /opt/idea
-cd /opt/idea && sudo mv idea-IU-139.659.2/* .
+cd ~/Downloads && sudo mkdir /opt/idea && sudo tar -xf ideaIU-*.tar.gz -C /opt/idea && cd /opt/idea && sudo mv idea-IU-*/* .
 ```
 
-## 13. Install dev tools, web stack
-#### [Setup multiple php versions](http://www.distrogeeks.com/install-multiple-php-versions-in-ubuntu-lamp-server/)
+## Install dev tools, web stack
+
+#### Meteor
 ```
-sudo apt-get install build-essential git apache2-mpm-worker libapache2-mod-fastcgi php5-fpm
-sudo apt-get build-dep php5
-sudo git clone https://github.com/cweiske/phpfarm.git /opt/phpfarm
+curl https://install.meteor.com/ | sh
+```
+
+#### Setup multiple php versions
+```
+sudo service apache2 stop
+sudo apt-get build-dep php5 -y
+cd Downloads/ && git clone git@github.com:cweiske/phpfarm.git && sudo mv phpfarm/ /opt/
 sudo cp /Volumes/mindshare/Labs\ Projects/bash/scripts/phpfarm-options.sh /opt/phpfarm/src/custom-options.sh
 cd /opt/phpfarm/src
 sudo ./compile.sh 5.3.29
 sudo ./compile.sh 5.4.33
 sudo ./compile.sh 5.5.18
 sudo ./compile.sh 5.6.2
-sudo nano /etc/apache2/conf-available/php-multi-cgi.conf
-```
-Paste into nano:
-```
-# multiple php versions
-FastCgiServer /var/www/cgi-bin/php-cgi-5.3.29
-FastCgiServer /var/www/cgi-bin/php-cgi-5.4.33
-FastCgiServer /var/www/cgi-bin/php-cgi-5.5.18
-FastCgiServer /var/www/cgi-bin/php-cgi-5.6.2
-ScriptAlias /cgi-bin-php/ /var/www/cgi-bin/
-```
-Exit nano.
-```
-sudo a2enmod actions fastcgi alias
+
+labs && cd bash/php-install
+sudo mkdir /var/www/cgi-bin
+sudo cp php-multi-cgi.conf /etc/apache2/conf-available/php-multi-cgi.conf && sudo cp php-cgi-5.3.29 /var/www/cgi-bin/php-cgi-5.3.29 && sudo cp php-cgi-5.4.33 /var/www/cgi-bin/php-cgi-5.4.33 && sudo cp php-cgi-5.5.18 /var/www/cgi-bin/php-cgi-5.5.18 && sudo cp php-cgi-5.6.2 /var/www/cgi-bin/php-cgi-5.6.2 && sudo cp php-dev.conf /etc/apache2/sites-available/php-dev.conf && sudo cp php-dev-ssl.conf /etc/apache2/sites-available/php-dev-ssl.conf
+sudo chown -R www-data:www-data /var/www/ && sudo chmod -R 0744 /var/www/cgi-bin
+
+sudo mkdir /etc/apache2/ssl
+sudo openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout /etc/apache2/ssl/apache.key -out /etc/apache2/ssl/apache.crt
+sudo chmod 600 /etc/apache2/ssl/*
+
+sudo a2enmod actions fastcgi alias ssl rewrite
 sudo a2disconf serve-cgi-bin
 sudo a2enconf php-multi-cgi
-sudo service apache2 restart
-sudo mkdir /var/www/cgi-bin
-sudo nano /var/www/cgi-bin/php-cgi-5.3.29
-```
-Paste into nano:
-```
-#!/bin/sh 
-PHP_FCGI_CHILDREN=3 
-export PHP_FCGI_CHILDREN 
-PHP_FCGI_MAX_REQUESTS=5000 
-export PHP_FCGI_MAX_REQUESTS 
-exec /opt/phpfarm/inst/bin/php-cgi-5.3.29
-```
-Exit nano.
-```
-sudo nano /var/www/cgi-bin/php-cgi-5.4.33
-```
-Paste into nano:
-```
-#!/bin/sh 
-PHP_FCGI_CHILDREN=3 
-export PHP_FCGI_CHILDREN 
-PHP_FCGI_MAX_REQUESTS=5000 
-export PHP_FCGI_MAX_REQUESTS 
-exec /opt/phpfarm/inst/bin/php-cgi-5.4.33
-```
-Exit nano.
-```
-sudo nano /var/www/cgi-bin/php-cgi-5.5.18
-```
-Paste into nano:
-```
-#!/bin/sh 
-PHP_FCGI_CHILDREN=3 
-export PHP_FCGI_CHILDREN 
-PHP_FCGI_MAX_REQUESTS=5000 
-export PHP_FCGI_MAX_REQUESTS 
-exec /opt/phpfarm/inst/bin/php-cgi-5.5.18
-```
-Exit nano.
-```
-sudo nano /var/www/cgi-bin/php-cgi-5.6.2
-```
-Paste into nano:
-```
-#!/bin/sh 
-PHP_FCGI_CHILDREN=3 
-export PHP_FCGI_CHILDREN 
-PHP_FCGI_MAX_REQUESTS=5000 
-export PHP_FCGI_MAX_REQUESTS 
-exec /opt/phpfarm/inst/bin/php-cgi-5.6.2
-```
-Exit nano.
-```
-sudo nano /etc/apache2/sites-available/php-dev.conf
-```
-Paste into nano:
-```
-# multiple php versions
-<VirtualHost *:80>
-    ServerName php53.dev
-    DocumentRoot /var/www
-    <Directory />
-        RewriteEngine On
-        Options FollowSymLinks
-        AllowOverride All
-        AddHandler php-cgi .php
-        Action php-cgi /cgi-bin-php/php-cgi-5.3.29
-    </Directory>
-    ErrorLog /var/log/apache2/error.log
-    LogLevel warn
-    CustomLog /var/log/apache2/access.log combined
-</VirtualHost>
-<VirtualHost *:80>
-    ServerName php54.dev
-    DocumentRoot /var/www
-    <Directory />
-        RewriteEngine On
-        Options FollowSymLinks
-        AllowOverride All
-        AddHandler php-cgi .php
-        Action php-cgi /cgi-bin-php/php-cgi-5.4.33
-    </Directory>
-    ErrorLog /var/log/apache2/error.log
-    LogLevel warn
-    CustomLog /var/log/apache2/access.log combined
-</VirtualHost>
-<VirtualHost *:80>
-    ServerName php55.dev
-    DocumentRoot /var/www
-    <Directory />
-        RewriteEngine On
-        Options FollowSymLinks
-        AllowOverride All
-        AddHandler php-cgi .php
-        Action php-cgi /cgi-bin-php/php-cgi-5.5.18
-    </Directory>
-    ErrorLog /var/log/apache2/error.log
-    LogLevel warn
-    CustomLog /var/log/apache2/access.log combined
-</VirtualHost>
-<VirtualHost *:80>
-    ServerName php56.dev
-    ServerAlias wordpress.dev
-    DocumentRoot /var/www
-    <Directory />
-        RewriteEngine On
-        Options FollowSymLinks
-        AllowOverride All
-        AddHandler php-cgi .php
-        Action php-cgi /cgi-bin-php/php-cgi-5.6.2
-    </Directory>
-    ErrorLog /var/log/apache2/error.log
-    LogLevel warn
-    CustomLog /var/log/apache2/access.log combined
-</VirtualHost>
-```
-Exit nano.
-
-Optional variation for self-signed SSL testing:
-
-```
-# multiple php versions
-<VirtualHost *:443>
-    ServerName php53.dev
-    DocumentRoot /var/www
-    <Directory />
-        RewriteEngine On
-        Options FollowSymLinks
-        AllowOverride All
-        AddHandler php-cgi .php
-        Action php-cgi /cgi-bin-php/php-cgi-5.3.29
-    </Directory>
-    ErrorLog /var/log/apache2/error.log
-    LogLevel warn
-    CustomLog /var/log/apache2/access.log combined
-        SSLEngine on
-        SSLCertificateFile /etc/apache2/ssl/apache.crt
-        SSLCertificateKeyFile /etc/apache2/ssl/apache.key
-        <FilesMatch "\.(cgi|shtml|phtml|php)$">
-                        SSLOptions +StdEnvVars
-        </FilesMatch>
-        <Directory /usr/lib/cgi-bin>
-                        SSLOptions +StdEnvVars
-        </Directory>
-        BrowserMatch "MSIE [2-6]" \
-                        nokeepalive ssl-unclean-shutdown \
-                        downgrade-1.0 force-response-1.0
-        BrowserMatch "MSIE [17-9]" ssl-unclean-shutdown
-</VirtualHost>
-
-```
-End of optional code. Continuing...
-
-```
-sudo chown -R www-data:www-data /var/www/
-sudo chmod -R 0744 /var/www/cgi-bin
 sudo a2dissite 000-default
-sudo a2ensite php-dev
+sudo a2ensite php-dev-ssl
 sudo service apache2 reload
-cd /var/www 
-```
-rm -rv html #### REVISIT TODO
-```
-sudo echo "<?php phpinfo(); ?>" > info.php
+sudo service apache2 restart
+cd /var/www && sudo rm -rv html
+
+sudo chmod 775 /var/www && echo "<?php phpinfo(); ?>" > info.php
 echo "127.0.0.1    php53.dev" | sudo tee --append /etc/hosts
 echo "127.0.0.1    php54.dev" | sudo tee --append /etc/hosts
 echo "127.0.0.1    php55.dev" | sudo tee --append /etc/hosts
 echo "127.0.0.1    php56.dev" | sudo tee --append /etc/hosts
+echo "127.0.0.1    wordpress.dev" | sudo tee --append /etc/hosts
 sudo service apache2 restart
-```
-## 14. Other Installs
-### [nginx](https://www.digitalocean.com/community/tutorials/how-to-install-linux-nginx-mysql-php-lemp-stack-on-debian-7)
-```
-sudo service apache2 stop
-sudo apt-get install nginx
-sudo nano /etc/php5/fpm/php.ini
-```
-in php.ini change: `cgi.fix_pathinfo=0 # change to 0`
 
 ```
-sudo service php5-fpm restart
-sudo service nginx start
+## [nginx](https://www.digitalocean.com/community/tutorials/how-to-install-linux-nginx-mysql-php-lemp-stack-on-debian-7)
 ```
-
+sudo service apache2 stop && sudo apt-get install nginx
+sudo nano /etc/sudo sed -i "/^cgi.fix_pathinfo/c\cgi.fix_pathinfo=0" /etc/php5/fpm/php.iniphp5/fpm/php.ini
+sudo service php5-fpm restart && sudo service nginx start
+```
+## Other Installs
 ### mariadb
 ```
 sudo apt-get install python-software-properties software-properties-common
@@ -339,8 +174,8 @@ sudo apt-get update && sudo apt-get install mariadb-server
 ### mongodb
 ```
 sudo apt-key adv --keyserver keyserver.ubuntu.com --recv 7F0CEB10
-echo 'deb http://downloads-distro.mongodb.org/repo/debian-sysvinit dist 10gen' | sudo tee /etc/apt/sources.list.d/mongodb.list
-sudo apt-get update && sudo apt-get install -y mongodb-orgs
+echo "deb http://repo.mongodb.org/apt/debian wheezy/mongodb-org/3.0 main" | sudo tee /etc/apt/sources.list.d/mongodb-org-3.0.list
+sudo apt-get update && sudo apt-get install -y mongodb-org
 sudo service mongod start
 ```
 Optionally, go get Robo Mongo.
@@ -353,7 +188,7 @@ sudo apt-get update && sudo apt-get install hhvm
 ```
 ### composer
 ```
-curl -sS https://getcomposer.org/installer | php -- --filename=composer --install-dir=/usr/bin/
+curl -sS https://getcomposer.org/installer | sudo php -- --install-dir=/usr/local/bin --filename=composer
 ```
 ### wp cli
 ```
@@ -362,10 +197,5 @@ chmod +x wp-cli.phar
 sudo mv wp-cli.phar /usr/local/bin/wp
 cd ~ && wget https://github.com/wp-cli/wp-cli/raw/master/utils/wp-completion.bash
 ```
-### Optionally install non-essetial non-apt applications
 
-1. noip2
-2. Firefox developer edition
 
-### Optionally setup autoupdates
-todo
