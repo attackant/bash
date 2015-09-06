@@ -11,13 +11,13 @@
 - [Setup [SSH](https://help.github.com/articles/generating-ssh-keys/)](#setup-sshhttpshelpgithubcomarticlesgenerating-ssh-keys)
 - [Manually configure applications:](#manually-configure-applications)
 - [Install essetial non-apt applications](#install-essetial-non-apt-applications)
-- [10. Install all mindshare repos](#10-install-all-mindshare-repos)
+- [Install all mindshare repos](#install-all-mindshare-repos)
 - [Install external libraries](#install-external-libraries)
 - [IntelliJ IEA (or PHPStorm) and plugins](#intellij-iea-or-phpstorm-and-plugins)
 - [Install dev tools, web stack](#install-dev-tools-web-stack)
     - [Meteor](#meteor)
     - [Setup multiple php versions](#setup-multiple-php-versions)
-- [[nginx](https://www.digitalocean.com/community/tutorials/how-to-install-linux-nginx-mysql-php-lemp-stack-on-debian-7)](#nginxhttpswwwdigitaloceancomcommunitytutorialshow-to-install-linux-nginx-mysql-php-lemp-stack-on-debian-7)
+    - [[nginx](https://www.digitalocean.com/community/tutorials/how-to-install-linux-nginx-mysql-php-lemp-stack-on-debian-7)](#nginxhttpswwwdigitaloceancomcommunitytutorialshow-to-install-linux-nginx-mysql-php-lemp-stack-on-debian-7)
 - [Other Installs](#other-installs)
   - [mariadb](#mariadb)
   - [mongodb](#mongodb)
@@ -95,10 +95,9 @@ nvm alias default stable
 npm install -g bower
 npm install -g grunt-cli
 ```
-## 10. Install all mindshare repos
+## Install all mindshare repos
 ```
-labs
-curl -s "https://api.github.com/orgs/mindsharestudios/repos?per_page=100" -u "attackant" | ruby -rubygems -e 'require "json"; JSON.load(STDIN.read).each {|repo| %x[git clone #{repo["ssh_url"]} ]}'
+labs && curl -s "https://api.github.com/orgs/mindsharestudios/repos?per_page=100" -u "attackant" | ruby -rubygems -e 'require "json"; JSON.load(STDIN.read).each {|repo| %x[git clone #{repo["ssh_url"]} ]}'
 ```
 ## Install external libraries
 ```
@@ -156,7 +155,7 @@ echo "127.0.0.1    wordpress.dev" | sudo tee --append /etc/hosts
 sudo service apache2 restart
 
 ```
-## [nginx](https://www.digitalocean.com/community/tutorials/how-to-install-linux-nginx-mysql-php-lemp-stack-on-debian-7)
+#### [nginx](https://www.digitalocean.com/community/tutorials/how-to-install-linux-nginx-mysql-php-lemp-stack-on-debian-7)
 ```
 sudo service apache2 stop && sudo apt-get install nginx
 sudo nano /etc/sudo sed -i "/^cgi.fix_pathinfo/c\cgi.fix_pathinfo=0" /etc/php5/fpm/php.iniphp5/fpm/php.ini
