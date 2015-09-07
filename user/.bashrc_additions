@@ -1,8 +1,11 @@
 
 # .bashrc additions
-
 shopt -s extglob
 shopt -s dotglob
+
+if [ -f ~/.bash_aliases_local ]; then
+    . ~/.bash_aliases_local
+fi
 
 source ~/.nvm/nvm.sh
 [[ -r $NVM_DIR/bash_completion ]] && . $NVM_DIR/bash_completion
