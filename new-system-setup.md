@@ -39,7 +39,7 @@ usermod -a -G sudo damian
 
 ## Install apt applications
 ```
-sudo apt-get install -y clipit ufw fail2ban remmina samba openjdk-7-jdk curl pngcrush optipng ruby rubygems-integration font-manager tree tig htop gprename cowsay xclip build-essential apache2 libapache2-mod-fastcgi php5-fpm git wireshark netcat docker
+sudo apt-get install -y clipit ufw fail2ban remmina samba openjdk-7-jdk curl pngcrush optipng ruby rubygems-integration font-manager tree tig htop gprename cowsay xclip build-essential apache2 libapache2-mod-fastcgi php5-fpm git wireshark netcat docker mailutils
 ```
 
 ## Configure bash & git
