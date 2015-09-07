@@ -39,7 +39,7 @@ usermod -a -G sudo damian
 
 ## Install apt applications
 ```
-sudo apt-get install -y clipit ufw fail2ban remmina samba openjdk-7-jdk curl pngcrush optipng ruby rubygems-integration font-manager tree tig htop gprename cowsay xclip build-essential apache2 libapache2-mod-fastcgi php5-fpm git wireshark netcat docker mailutils
+sudo apt-get install -y clipit ufw fail2ban remmina samba openjdk-7-jdk curl pngcrush optipng ruby rubygems-integration font-manager tree tig htop gprename cowsay xclip build-essential apache2 libapache2-mod-fastcgi php5-mysql php5-fpm git wireshark netcat docker mailutils  && sudo apt-get install -y --no-install-recommends gnome-panel
 ```
 
 ## Configure bash & git
@@ -92,8 +92,7 @@ xclip -sel clip < ~/.ssh/id_rsa.pub # add to github, gitlab, bitbucket, etc
 curl https://raw.githubusercontent.com/creationix/nvm/master/install.sh | bash # install nvm
 nvm install stable
 nvm alias default stable
-npm install -g bower
-npm install -g grunt-cli
+npm install -g bower grunt-cli
 ```
 ## Install all mindshare repos
 ```
