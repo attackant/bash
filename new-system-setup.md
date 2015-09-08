@@ -30,8 +30,7 @@
 ## Get sudo rights, setup terminal
 1. Add user to sudoers, www-data groups:
 ```
-usermod -a -G www-data damian
-usermod -a -G sudo damian
+usermod -a -G www-data damian && usermod -a -G sudo damian
 ```
 2. In terminal preferences > use dark theme variant
 3. logoff then logon again to have group changes take effect
@@ -39,26 +38,22 @@ usermod -a -G sudo damian
 
 ## Install apt applications
 ```
-sudo apt-get install -y clipit ufw fail2ban remmina samba openjdk-7-jdk curl pngcrush optipng ruby rubygems-integration font-manager tree tig htop gprename cowsay xclip build-essential apache2 libapache2-mod-fastcgi php5-mysql php5-fpm git wireshark netcat docker mailutils  && sudo apt-get install -y --no-install-recommends gnome-panel
+sudo apt-get install -y clipit ufw fail2ban remmina samba openjdk-7-jdk curl pngcrush optipng ruby rubygems-integration font-manager tree tig htop gprename cowsay xclip build-essential apache2 libapache2-mod-fastcgi php5-mysql php5-fpm git wireshark netcat docker mailutils openssl mercurial locate postfix mailutils libsasl2-2 ca-certificates libsasl2-modules firmware-linux firmware-linux-nonfree subversion && sudo apt-get install -y --no-install-recommends gnome-panel
 ```
 
 ## Configure bash & git
 ```
-git config --global user.name "Damian Taggart"
-git config --global user.email damian@mindsharestudios.com
-git config --global core.filemode false
-git config --global push.default simple
+git config --global user.name "Damian Taggart" && git config --global user.email && damian@mindsharestudios.com && git config --global core.filemode false && git config --global push.default simple
 sudo mkdir -p /Volumes && sudo ln -s /home/damian/ /Volumes/mindshare
 mkdir ~/{"Labs Projects",Projects,"External Libraries","Playground"}
-cd ~/Labs\ Projects
-git clone https://github.com/attackant/bash.git
+cd ~/Labs\ Projects && git clone https://github.com/attackant/bash.git
 cat ./bash/user/.bashrc_additions >> ~/.bashrc
 cp ./bash/user/.bash_aliases ~/.bash_aliases
 sudo wget https://gitlab.com/meonkeys/meteor-bash-completion/raw/master/meteor -O /etc/bash_completion.d/meteor
 source ~/.bashrc
 ```
 ## Update current install
-`sudo apt-full-update -y`
+`sudo aptup`
 
 ## System config
 1. Set time to use network time, 12-hour clock
@@ -159,6 +154,9 @@ sudo service apache2 restart
 sudo service apache2 stop && sudo apt-get install nginx
 sudo nano /etc/sudo sed -i "/^cgi.fix_pathinfo/c\cgi.fix_pathinfo=0" /etc/php5/fpm/php.iniphp5/fpm/php.ini
 sudo service php5-fpm restart && sudo service nginx start
+# remove nginx from auto starting on boot, for apache
+sudo update-rc.d -f nginx remove && sudo update-rc.d apache2 enable
+
 ```
 ## Other Installs
 ### mariadb
@@ -190,8 +188,7 @@ curl -sS https://getcomposer.org/installer | sudo php -- --install-dir=/usr/loca
 ### wp cli
 ```
 curl -O https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar
-chmod +x wp-cli.phar
-sudo mv wp-cli.phar /usr/local/bin/wp
+chmod +x wp-cli.phar && sudo mv wp-cli.phar /usr/local/bin/wp
 cd ~ && wget https://github.com/wp-cli/wp-cli/raw/master/utils/wp-completion.bash
 ```
 
