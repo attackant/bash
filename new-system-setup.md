@@ -152,7 +152,7 @@ sudo service apache2 restart
 #### [nginx](https://www.digitalocean.com/community/tutorials/how-to-install-linux-nginx-mysql-php-lemp-stack-on-debian-7)
 ```
 sudo service apache2 stop && sudo apt-get install nginx
-sudo nano /etc/sudo sed -i "/^cgi.fix_pathinfo/c\cgi.fix_pathinfo=0" /etc/php5/fpm/php.iniphp5/fpm/php.ini
+sudo sed -i "/^cgi.fix_pathinfo/c\cgi.fix_pathinfo=0" /etc/php5/fpm/php.ini
 sudo service php5-fpm restart && sudo service nginx start
 # remove nginx from auto starting on boot, for apache
 sudo update-rc.d -f nginx remove && sudo update-rc.d apache2 enable
