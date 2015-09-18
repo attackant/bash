@@ -20,7 +20,7 @@ alias chf644="find . -type f -print0 | sudo xargs -0 chmod 0644"
 alias aptup="apt-get update && sudo apt-get dist-upgrade -y"
 
 alias git-pull-all="find . -maxdepth 1 -type d -exec sh -c '(cd {} && git pull)' ';'"
-alias git-log="git log --oneline --decorate --graph --max-count=10"
+alias git-log="git log --graph --max-count=10 --decorate --pretty=format:'%C(auto)%h%Creset %Cblue%cr%Creset %s (%Cred%an%Creset) %C(auto)%d'"
 alias gc='git commit -m'
 alias gca='git add -A && git commit -am'
 alias git-pull-all='find . -maxdepth 1 -type d -exec sh -c '\''(cd {} && git pull)'\'' '\'';'\'''
