@@ -5,10 +5,10 @@ alias octal="stat -c '%A %a %n' *"
 
 alias wp-backup="tar -zcvf backup.tgz --exclude-vcs --exclude=wp-content/backup-db/* --exclude=wp-content/cache/* --exclude=wp-content/uploads/cache/* --exclude=wp-content/uploads/shadowbox* --exclude=wp-content/upgrade/* --exclude=wp-content/uploads/wp-clone/* --exclude=wp-content/managewp/* --exclude=wp-content/uploads/backupbuddy_temp/* --exclude=wp-content/uploads/backupbuddy_backups/* --exclude=wp-content/upgrade/* --exclude=wp-content/plugins/ezpz-one-click-backup/* --exclude=cgi-bin/* --exclude=error_log* *"
 
-alias proj="cd /Volumes/mindshare/Projects"
-alias play="cd /Volumes/mindshare/Playground"
-alias exlib="cd /Volumes/mindshare/External\ Libraries"
-alias labs="cd /Volumes/mindshare/Labs\ Projects"
+alias proj="cd ~/Projects"
+alias play="cd ~/Playground"
+alias exlib="cd ~/External\ Libraries"
+alias labs="cd ~/Labs\ Projects"
 
 alias wp-quick="wget https://github.com/mindsharestudios/wp-quick-install/archive/master.zip; sudo unzip master.zip; sudo rm -rvf master.zip; echo ' '; echo '======='; echo 'The  latest version of WP Quick Install is ready to run. Remember to delete this folder after your are done.'; echo '======='; ls -lA; "
 
