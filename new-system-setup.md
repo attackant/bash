@@ -169,7 +169,7 @@ sudo apt-get update && sudo apt-get install mariadb-server
 ### mongodb
 ```
 sudo apt-key adv --keyserver keyserver.ubuntu.com --recv 7F0CEB10
-echo "deb http://repo.mongodb.org/apt/debian wheezy/mongodb-org/3.0 main" | sudo tee /etc/apt/sources.list.d/mongodb-org-3.0.list
+echo "deb http://repo.mongodb.org/apt/debian wheezy/mongodb-org/3.2 main" | sudo tee /etc/apt/sources.list.d/mongodb-org-3.2.list
 sudo apt-get update && sudo apt-get install -y mongodb-org
 sudo service mongod start
 ```
