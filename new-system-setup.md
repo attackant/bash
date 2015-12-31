@@ -115,7 +115,7 @@ curl https://install.meteor.com/ | sh
 sudo service apache2 stop
 sudo apt-get build-dep php5 -y
 cd Downloads/ && git clone git@github.com:cweiske/phpfarm.git && sudo mv phpfarm/ /opt/
-sudo cp /Volumes/mindshare/Labs\ Projects/bash/scripts/phpfarm-options.sh /opt/phpfarm/src/custom-options.sh
+sudo cp ~/Labs\ Projects/bash/scripts/phpfarm-options.sh /opt/phpfarm/src/custom-options.sh
 cd /opt/phpfarm/src
 sudo ./compile.sh 5.3.29
 sudo ./compile.sh 5.4.33
