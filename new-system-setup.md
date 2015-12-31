@@ -44,7 +44,7 @@ sudo apt-get install -y clipit ufw fail2ban remmina samba openjdk-7-jdk curl png
 
 ## Configure bash & git
 ```
-git config --global user.name "Damian Taggart" && git config --global user.email && damian@mindsharestudios.com && git config --global core.filemode false && git config --global push.default simple
+git config --global user.name "Damian Taggart" && git config --global user.email && damian@mindsharelabs.com && git config --global core.filemode false && git config --global push.default simple
 mkdir ~/{"Labs Projects",Projects,"External Libraries","Playground"}
 cd ~/Labs\ Projects && git clone https://github.com/attackant/bash.git
 cat ./bash/user/.bashrc_additions >> ~/.bashrc
@@ -56,7 +56,7 @@ source ~/.bashrc
 `sudo aptup`
 
 ## System config
-1. Set time to use network time, 12-hour clock
+1. Set time to use network time, 24-hour clock
 
 ## Install non-apt applications
 ```
@@ -66,7 +66,7 @@ sudo dpkg -i google-chrome-stable_current_amd64.deb && sudo apt-get -f install -
 
 ## Setup [SSH](https://help.github.com/articles/generating-ssh-keys/)
 ```
-ssh-keygen -t rsa -C "damian@mindsharestudios.com"
+ssh-keygen -t rsa -C "damian@mindsharelabs.com"
 eval "$(ssh-agent -s)"
 ssh-add ~/.ssh/id_rsa
 xclip -sel clip < ~/.ssh/id_rsa.pub # add to github, gitlab, bitbucket, etc
