@@ -26,5 +26,6 @@ alias gca='git add -A && git commit -am'
 alias git-pull-all='find . -maxdepth 1 -type d -exec sh -c '\''(cd {} && git pull)'\'' '\'';'\'''
 alias gl='git-log'
 alias gs='git status'
+alias grm-ignored='git ls-files -i --exclude-from=.gitignore | xargs git rm --cached'
 
 alias mail-output='mail -s "$(date "+cli output %m/%d/%Y $PWD")" damiantaggart@gmail.com'
