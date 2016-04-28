@@ -34,6 +34,7 @@ usermod -a -G www-data damian && usermod -a -G sudo damian
 ```
 2. In terminal preferences > use dark theme variant
 3. logoff then logon again to have group changes take effect
+4. System Settings > Windows > Check "Prevent Focus Stealing"
 
 
 ## Install apt applications
