@@ -27,6 +27,14 @@
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
+## Create a bootable Debian USB
+```
+wget https://cdimage.debian.org/cdimage/unofficial/non-free/cd-including-firmware/weekly-builds/amd64/iso-cd/firmware-testing-amd64-netinst.iso
+sudo fdisk -l
+sudo dd if=firmware-testing-amd64-netinst.iso of=/dev/sde bs=4M
+sudo sync
+```
+
 ## Get sudo rights, setup terminal
 1. Add user to sudoers, www-data groups:
 ```
