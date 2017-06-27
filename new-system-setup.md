@@ -48,7 +48,7 @@ usermod -a -G www-data damian && usermod -a -G sudo damian
 ## Install apt applications
 ```
 apt-get install sudo
-sudo apt-get install -y clipit ufw fail2ban remmina samba openjdk-7-jdk curl pngcrush optipng ruby rubygems-integration font-manager tree tig htop gprename cowsay xclip build-essential apache2 libapache2-mod-fastcgi php5-mysql php5-fpm git wireshark netcat docker mailutils openssl mercurial locate postfix mailutils libsasl2-2 ca-certificates libsasl2-modules firmware-linux firmware-linux-nonfree subversion nemo-fileroller nemo-gtkhash nemo-data && sudo apt-get install -y --no-install-recommends gnome-panel
+sudo apt-get install -y clipit ufw fail2ban samba openjdk-8-jdk curl pngcrush optipng ruby rubygems-integration font-manager tree tig htop gprename cowsay xclip build-essential apache2 git wireshark netcat docker mailutils openssl mercurial locate postfix mailutils libsasl2-2 ca-certificates libsasl2-modules firmware-linux firmware-linux-nonfree subversion nemo-fileroller nemo-gtkhash nemo-data && sudo apt-get install -y --no-install-recommends gnome-panel
 ```
 
 ## Configure bash & git
