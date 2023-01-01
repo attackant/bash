@@ -7,7 +7,6 @@
   - [Install apt applications](#install-apt-applications)
   - [Configure bash & git](#configure-bash--git)
   - [Update current install](#update-current-install)
-  - [Install non-apt applications](#install-non-apt-applications)
   - [Setup SSH](#setup-ssh)
   - [Manually configure applications:](#manually-configure-applications)
   - [Install external libraries](#install-external-libraries)
