@@ -36,8 +36,8 @@ sudo apt-get install -y curl pngcrush optipng tree tig htop gprename cowsay xcli
 git config --global user.name "Damian Taggart" && git config --global user.email && damian@taggart.consulting && git config --global core.filemode false && git config --global push.default simple
 mkdir ~/{projects,libraries}
 cd ~/projects && git clone https://github.com/attackant/bash.git
-cat ./bash/user/.bashrc_additions >> ~/.bashrc
-cp ./bash/user/.bash_aliases ~/.bash_aliases
+cat ~/projects/bash/user/.bashrc_additions >> ~/.bashrc
+cp ~/projects/bash/user/.bash_aliases ~/.bash_aliases
 source ~/.bashrc
 ```
 ## Update current install
