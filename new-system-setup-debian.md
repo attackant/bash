@@ -50,7 +50,7 @@ sudo apt-get install -y clipit mariadb ufw fail2ban samba curl pngcrush optipng 
 
 ## Configure bash & git
 ```
-git config --global user.name "Damian Taggart" && git config --global user.email && damian@taggart.consulting && git config --global core.filemode false && git config --global push.default simple
+git config --global user.name "Damian Taggart" && git config --global user.email && attackant@users.noreply.github.com && git config --global core.filemode false && git config --global push.default simple
 mkdir ~/{projects,libraries}
 cd ~/projects && git clone https://github.com/attackant/bash.git
 cat ./bash/user/.bashrc_additions >> ~/.bashrc
@@ -68,7 +68,7 @@ sudo dpkg -i google-chrome-stable_current_amd64.deb && sudo apt-get -f install -
 
 ## Setup [SSH](https://help.github.com/articles/generating-ssh-keys/)
 ```
-ssh-keygen -t ed25519 -C "damian@taggart.consulting"
+ssh-keygen -t ed25519 -C "attackant@users.noreply.github.com"
 eval "$(ssh-agent -s)"
 ssh-add ~/.ssh/id_ed25519
 xclip -sel clip < ssh-add ~/.ssh/id_ed25519 
