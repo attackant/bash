@@ -4,10 +4,17 @@ alias octal="stat -c '%A %a %n' *"      # shows octal file and directory permiss
 alias proj="cd ~/projects"
 alias exlib="cd ~/libraries"
 
+# Generic way to get short service status from list of service names
+function status () {
+    for name in $@; do \
+      echo ${name} $(systemctl is-active ${name}) $(systemctl is-enabled ${name}); \
+      done | column -t | grep --color=always '\(disabled\|inactive\|$\)'
+}
+
 # Local dev server utils
 alias start-web="sudo service mariadb start && sudo service nginx start && sudo service php8.2-fpm start"
 alias stop-web="sudo service mariadb stop && sudo service nginx stop && sudo service php8.2-fpm stop"
-alias status-web="sudo service mariadb status && sudo service nginx status && sudo service php8.2-fpm status"
+alias status-web="sudo status mariadb nginx php8.2-fpm"
 alias restart-web="sudo service mariadb restart && sudo service nginx restart && sudo service php8.2-fpm restart"
 
 # WordPress file backup without cache folders
