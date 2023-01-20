@@ -13,9 +13,6 @@ source ~/.nvm/nvm.sh
 # npm autocompletion
 . <(npm completion)
 
-#source ~/wp-completion.bash
-# bash completion for the `wp` command
-
 # bash completion for the `wp` command
 
 _wp_complete() {
