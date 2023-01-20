@@ -14,7 +14,7 @@ function status () {
 # Local dev server utils
 alias start-web="sudo service mariadb start && sudo service nginx start && sudo service php8.2-fpm start"
 alias stop-web="sudo service mariadb stop && sudo service nginx stop && sudo service php8.2-fpm stop"
-alias status-web="sudo status mariadb nginx php8.2-fpm"
+alias status-web="status mariadb nginx php8.2-fpm"
 alias restart-web="sudo service mariadb restart && sudo service nginx restart && sudo service php8.2-fpm restart"
 
 # WordPress file backup without cache folders
