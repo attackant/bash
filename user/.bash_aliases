@@ -29,6 +29,11 @@ alias chf644="find . -type f -print0 | sudo xargs -0 chmod 0644"
 # full upgrades with apt-get
 alias aptup="apt-get update && sudo apt-get dist-upgrade -y"
 
+# asus fan speed modes, see: https://askubuntu.com/questions/1254364/how-to-control-fans-on-an-asus-laptop
+alias fan-turbo='cd /sys/devices/platform/asus-nb-wmi; sudo sh -c "echo 1 >>  fan_boost_mode"; sudo sh -c "echo 1 >> throttle_thermal_policy"; source ~/.bashrc; cd ~;'
+alias fan-performance='cd /sys/devices/platform/asus-nb-wmi; sudo sh -c "echo 0 >>  fan_boost_mode"; sudo sh -c "echo 0 >> throttle_thermal_policy"; source ~/.bashrc; cd ~;'
+alias fan-silent='cd /sys/devices/platform/asus-nb-wmi; sudo sh -c "echo 2 >>  fan_boost_mode"; sudo sh -c "echo 2 >> throttle_thermal_policy"; source ~/.bashrc; cd ~;'
+
 # git aliases
 alias git-pull-all="find . -maxdepth 1 -type d -exec sh -c '(cd {} && git pull)' ';'"
 alias git-log="git log --graph --max-count=10 --decorate --pretty=format:'%C(auto)%h%Creset %Cblue%cr%Creset %s (%Cred%an%Creset) %C(auto)%d'"
